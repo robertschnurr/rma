@@ -36,5 +36,5 @@ build/
 outputs/
 wandb/
 logs/
-!logs/rsl_rl/rma/spot_rma/2026-03-29_02-27-22
-!logs/rsl_rl/rma/spot_rma/2026-03-29_12-21-51
+!logs/rsl_rl/spot_rma/2026-03-29_02-27-22
+!logs/rsl_rl/spot_rma/2026-03-29_12-21-51
