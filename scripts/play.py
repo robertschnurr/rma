@@ -58,7 +58,9 @@ import os
 import time
 import torch
 
+# from rma_tasks.rma.config import spot
 from rsl_rl.runners import DistillationRunner, OnPolicyRunner
+from rma_tasks.rma.runners import BasePolicyRunner
 
 from isaaclab.envs import (
     DirectMARLEnv,
@@ -137,7 +139,7 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     print(f"[INFO]: Loading model checkpoint from: {resume_path}")
     # load previously trained model
     if agent_cfg.class_name == "OnPolicyRunner":
-        runner = OnPolicyRunner(env, agent_cfg.to_dict(), log_dir=None, device=agent_cfg.device)
+        runner = BasePolicyRunner(env, agent_cfg.to_dict(), log_dir=log_dir, device=agent_cfg.device)
     elif agent_cfg.class_name == "DistillationRunner":
         runner = DistillationRunner(env, agent_cfg.to_dict(), log_dir=None, device=agent_cfg.device)
     else:
@@ -174,12 +176,12 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     # reset environment
     obs = env.get_observations()
 
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
 
     timestep = 0
 
-    import onnxruntime as ort
-    inference_session = ort.InferenceSession("/home/pranavrao87/rma/scripts/logs/rma/spot_rma/exported/2026-01-13_20-35-24/Vision_RMA/runs/pjdkt9mf/model_12000_deployment/model_12000.onnx")
+    # import onnxruntime as ort
+    # inference_session = ort.InferenceSession("/home/pranavrao87/rma/scripts/logs/rma/spot_rma/exported/2026-01-13_20-35-24/Vision_RMA/runs/pjdkt9mf/model_12000_deployment/model_12000.onnx")
 
     # simulate environment
     while simulation_app.is_running():

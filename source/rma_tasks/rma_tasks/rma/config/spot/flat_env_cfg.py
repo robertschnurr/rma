@@ -354,7 +354,8 @@ class SpotFlatEnvCfg(LocomotionVelocityRoughEnvCfg):
     events: SpotEventCfg = SpotEventCfg()
 
     # Viewer
-    viewer = ViewerCfg(eye=(10.5, 10.5, 0.3), origin_type="world", env_index=0, asset_name="robot")
+    # viewer = ViewerCfg(eye=(10.5, 10.5, 0.3), origin_type="world", env_index=0, asset_name="robot") #original
+    viewer = ViewerCfg(eye=(4.0, 4.0, 2.5), origin_type="asset_root", env_index=0, asset_name="robot")
 
     def __post_init__(self):
         # post init of parent
