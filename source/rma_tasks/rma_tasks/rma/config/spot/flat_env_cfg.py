@@ -13,7 +13,8 @@ from isaaclab.managers import RewardTermCfg, SceneEntityCfg
 from isaaclab.managers import TerminationTermCfg as DoneTerm
 from isaaclab.terrains import TerrainImporterCfg
 from isaaclab.scene import InteractiveSceneCfg
-from isaaclab.sensors import ContactSensorCfg, RayCasterCfg, CameraCfg, patterns
+from isaaclab.sensors import ContactSensorCfg, RayCasterCfg, patterns
+# from isaaclab.sensors import CameraCfg
 from isaaclab.utils import configclass
 from isaaclab.utils.assets import ISAACLAB_NUCLEUS_DIR
 from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
@@ -70,27 +71,27 @@ class MySceneCfg(InteractiveSceneCfg):
         debug_vis=False
     )
 
-    # front-facing depth camera for future vision-based adaptation (not used in training yet)
-    front_camera = CameraCfg(
-        prim_path="{ENV_REGEX_NS}/Robot/body/front_camera",
-        update_period=0.1,
-        history_length=0,
-        debug_vis=False,
-        spawn=sim_utils.PinholeCameraCfg(
-            focal_length=24.0,
-            focus_distance=400.0,
-            horizontal_aperture=20.955,
-            clipping_range=(0.1, 1e5),
-        ),
-        offset=CameraCfg.OffsetCfg(
-            pos=(0.4, 0.0, 0.0),
-            rot=(0.5, 0.5, -0.5, -0.5),
-            convention="ros",
-        ),
-        data_types=["depth"],
-        width=64,
-        height=64,
-    )
+    # # front-facing depth camera for future vision-based adaptation (not used in training yet)
+    # front_camera = CameraCfg(
+    #     prim_path="{ENV_REGEX_NS}/Robot/body/front_camera",
+    #     update_period=0.1,
+    #     history_length=0,
+    #     debug_vis=False,
+    #     spawn=sim_utils.PinholeCameraCfg(
+    #         focal_length=24.0,
+    #         focus_distance=400.0,
+    #         horizontal_aperture=20.955,
+    #         clipping_range=(0.1, 1e5),
+    #     ),
+    #     offset=CameraCfg.OffsetCfg(
+    #         pos=(0.4, 0.0, 0.0),
+    #         rot=(0.5, 0.5, -0.5, -0.5),
+    #         convention="ros",
+    #     ),
+    #     data_types=["depth"],
+    #     width=64,
+    #     height=64,
+    # )
 
 
 @configclass
@@ -377,7 +378,8 @@ class SpotFlatEnvCfg(LocomotionVelocityRoughEnvCfg):
 
     # Viewer
     # viewer = ViewerCfg(eye=(10.5, 10.5, 0.3), origin_type="world", env_index=0, asset_name="robot") #original
-    viewer = ViewerCfg(eye=(4.0, 4.0, 2.5), origin_type="asset_root", env_index=0, asset_name="robot")
+    # viewer = ViewerCfg(eye=(4.0, 4.0, 2.5), origin_type="asset_root", env_index=0, asset_name="robot")
+    viewer = ViewerCfg(eye=(10.5, 10.5, 10), origin_type="world", env_index=0, asset_name="robot")
 
     def __post_init__(self):
         # post init of parent

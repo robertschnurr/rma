@@ -108,7 +108,7 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     env_cfg.viewer = ViewerCfg(
         eye=(args_cli.x, args_cli.y, args_cli.z),
         origin_type=args_cli.origin_type,
-        env_index=0,
+        env_index=1000,
         asset_name="robot"
     )
 
