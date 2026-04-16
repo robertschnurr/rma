@@ -1,0 +1,7 @@
+services:
+  isaac-lab-ros2:
+    volumes:
+      - type: bind
+        source: $HOME/rma
+        target: /rma
+        read_only: false
